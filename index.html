@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>direkturcrypto | Web3 Security & Automation Specialist</title>
+<meta name="description" content="I find bugs others miss. I build automation that works. Web3 security researcher, DeFi automation builder, and smart contract auditor with proven results across 15+ protocols.">
+<link rel="canonical" href="https://direkturcrypto.github.io/portfolio/">
+<meta property="og:title" content="direkturcrypto | Web3 Security & Automation Specialist">
+<meta property="og:description" content="I find bugs others miss. I build automation that works. Proven results across 15+ Web3 protocols.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://direkturcrypto.github.io/portfolio/">
+<meta property="og:image" content="https://direkturcrypto.github.io/portfolio/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@direkturcrypto">
+<meta name="twitter:title" content="direkturcrypto | Web3 Security & Automation Specialist">
+<meta name="twitter:description" content="I find bugs others miss. I build automation that works. Proven results across 15+ Web3 protocols.">
+<meta name="twitter:image" content="https://direkturcrypto.github.io/portfolio/og-image.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23CE1B1B'/%3E%3Cstop offset='100%25' stop-color='%23B71C1C'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%230D0D0D'/%3E%3Ctext x='32' y='46' text-anchor='middle' font-family='Arial,sans-serif' font-weight='900' font-size='36' fill='url(%23g)'%3EDC%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23CE1B1B'/%3E%3Cstop offset='100%25' stop-color='%23B71C1C'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='180' height='180' rx='40' fill='%230D0D0D'/%3E%3Ctext x='90' y='125' text-anchor='middle' font-family='Arial,sans-serif' font-weight='900' font-size='96' fill='url(%23g)'%3EDC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0D0D0D;--bg2:#1A1A1A;--glass:rgba(206,27,27,.03);
+  --glass-border:rgba(255,255,255,.08);--red:#CE1B1B;--red-light:#E53935;
+  --red-dark:#B71C1C;--text:#E8E8E8;--text-dim:#9E9E9E;
+  --gradient:#CE1B1B;
+  --elastic:cubic-bezier(.34,1.56,.64,1);
+}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:#CE1B1B var(--bg)}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+
+/* SCROLL PROGRESS */
+#scroll-progress{position:fixed;top:0;left:0;height:3px;background:#CE1B1B;z-index:9999;transform-origin:left;transform:scaleX(0);transition:transform .05s linear;box-shadow:0 0 10px rgba(206,27,27,.4)}
+
+/* NAV */
+nav{position:fixed;top:3px;left:0;width:100%;z-index:1000;padding:1rem 2rem;transition:all .4s cubic-bezier(.22,1,.36,1)}
+nav.scrolled{background:rgba(13,13,13,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border);padding:.6rem 2rem}
+.nav-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-weight:800;font-size:1.3rem;color:#CE1B1B;cursor:default}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .15s;position:relative}
+.nav-links a:hover{color:#CE1B1B}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:#CE1B1B;transition:width .15s cubic-bezier(.22,1,.36,1)}
+.nav-links a:hover::after{width:100%}
+.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:2rem}
+#particles-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0}
+.hero-content{position:relative;z-index:1}
+.hero h1{font-size:clamp(2.5rem,7vw,5rem);font-weight:900;letter-spacing:-.02em;color:#F0F0F0;-webkit-text-fill-color:#F0F0F0}
+@keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero .tagline{font-size:clamp(1rem,2.5vw,1.35rem);color:var(--text-dim);margin-top:1rem;font-weight:400;letter-spacing:.02em}
+.hero .tagline span{color:#CE1B1B;font-weight:600}
+.hero .available-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.2rem;border-radius:50px;background:rgba(206,27,27,.08);border:1px solid rgba(206,27,27,.2);margin-bottom:1.5rem;font-size:.85rem;font-weight:600;color:#CE1B1B;animation:pulseGlow 2s ease-in-out infinite}
+.hero .available-badge .dot{width:8px;height:8px;border-radius:50%;background:#CE1B1B;animation:dotPulse 1.5s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(206,27,27,.2)}50%{box-shadow:0 0 20px 5px rgba(206,27,27,.15)}}
+@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.hero-cta{margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* HIRE ME BUTTON - HERO SIZE */
+.btn-hire{padding:1.1rem 3rem;border-radius:50px;font-weight:700;font-size:1.15rem;cursor:pointer;transition:all .4s var(--elastic);border:none;text-decoration:none;display:inline-flex;align-items:center;gap:.6rem;position:relative;overflow:hidden;background:linear-gradient(135deg,#CE1B1B,#B71C1C);color:#F0F0F0;box-shadow:0 0 30px rgba(206,27,27,.25);animation:hirePulse 3s ease-in-out infinite}
+.btn-hire:hover{transform:translateY(-5px) scale(1.08);box-shadow:0 20px 60px rgba(206,27,27,.4)}
+@keyframes hirePulse{0%,100%{box-shadow:0 0 30px rgba(206,27,27,.25)}50%{box-shadow:0 0 50px rgba(206,27,27,.4)}}
+.btn-hire .shimmer{position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shimmer 3s infinite}
+@keyframes shimmer{0%{left:-100%}100%{left:200%}}
+
+.btn{padding:.85rem 2rem;border-radius:50px;font-weight:600;font-size:.95rem;cursor:pointer;transition:all .4s var(--elastic);border:none;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;position:relative;overflow:hidden}
+.btn-primary{background:linear-gradient(135deg,#CE1B1B,#B71C1C);color:#F0F0F0}
+.btn-primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 12px 40px rgba(206,27,27,.35)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--glass-border)}
+.btn-outline:hover{border-color:#CE1B1B;color:#CE1B1B;transform:translateY(-3px) scale(1.03)}
+.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:1;animation:bounce 2s infinite}
+.scroll-indicator i{color:var(--text-dim);font-size:1.5rem}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+/* MARQUEE TICKER */
+.marquee-section{overflow:hidden;padding:1.5rem 0;background:var(--bg2);border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border)}
+.marquee-track{display:flex;gap:3rem;animation:marqueeScroll 20s linear infinite;width:max-content}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{white-space:nowrap;font-size:clamp(1.2rem,3vw,2rem);font-weight:800;color:#CE1B1B;opacity:.5;display:flex;align-items:center;gap:1rem}
+.marquee-item .sep{width:6px;height:6px;border-radius:50%;background:#CE1B1B;-webkit-text-fill-color:initial;opacity:.5}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTION STYLING */
+section{padding:6rem 2rem;max-width:1200px;margin:auto;position:relative}
+.section-header{text-align:center;margin-bottom:4rem}
+.section-header h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:#CE1B1B;margin-bottom:.5rem}
+.section-header p{color:var(--text-dim);font-size:1.05rem;max-width:600px;margin:auto}
+/* Big scaling text */
+.big-scale-text{font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:1;text-align:center;color:rgba(255,255,255,.04);pointer-events:none;user-select:none;-webkit-text-stroke:1px rgba(255,255,255,.06);transition:transform .1s linear,opacity .1s linear}
+
+/* CUSTOM SVG DIVIDERS */
+.svg-divider{width:100%;overflow:hidden;line-height:0;position:relative}
+.svg-divider svg{display:block;width:100%;height:80px}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+.skill-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:2rem;backdrop-filter:blur(10px);transition:all .4s var(--elastic);position:relative;overflow:hidden;transform-style:preserve-3d;perspective:800px}
+.skill-card{background:rgba(28,28,28,.8)}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#CE1B1B;opacity:0;transition:opacity .15s}
+.skill-card:hover{transform:translateY(-10px) scale(1.02);border-color:rgba(206,27,27,.3);box-shadow:0 25px 60px rgba(206,27,27,.12)}
+.skill-card:hover::before{opacity:1}
+.skill-icon{width:50px;height:50px;border-radius:12px;background:#CE1B1B;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.skill-icon svg{width:28px;height:28px}
+.skill-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.4rem}
+.skill-card p{color:var(--text-dim);font-size:.9rem}
+
+/* COUNTER STATS */
+.stats-row{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin:3rem 0}
+.stat-item{text-align:center}
+.stat-number{font-size:clamp(2.5rem,5vw,3.5rem);font-weight:900;color:#CE1B1B;font-variant-numeric:tabular-nums}
+.stat-label{color:var(--text-dim);font-size:.9rem;font-weight:500;margin-top:.3rem}
+
+/* LANGUAGES */
+.lang-section{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:3rem}
+.lang-badge{background:var(--glass);border:1px solid var(--glass-border);border-radius:50px;padding:.7rem 2rem;backdrop-filter:blur(10px);font-weight:600;display:flex;align-items:center;gap:.5rem;transition:all .4s var(--elastic)}
+.lang-badge:hover{border-color:#CE1B1B;transform:scale(1.07)}
+.lang-badge i{color:#CE1B1B}
+
+/* PROJECTS / EXPERIENCE */
+.project-category{margin-bottom:3rem}
+.project-category h3{font-size:1.3rem;font-weight:700;margin-bottom:1.5rem;padding-left:1rem;border-left:3px solid #CE1B1B}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.project-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:16px;padding:1.8rem;backdrop-filter:blur(10px);transition:all .4s var(--elastic);position:relative;overflow:hidden;transform-style:preserve-3d;perspective:800px}
+.project-card{background:rgba(28,28,28,.8)}
+.project-card::after{content:'';position:absolute;inset:0;background:rgba(206,27,27,.05);opacity:0;transition:opacity .15s}
+.project-card:hover{border-color:rgba(206,27,27,.3);box-shadow:0 20px 50px rgba(206,27,27,.12)}
+.project-card:hover::after{opacity:1}
+.project-card>*{position:relative;z-index:1}
+.project-card h4{font-size:1.1rem;font-weight:700;margin-bottom:.4rem;color:#CE1B1B}
+.project-card p{color:var(--text-dim);font-size:.9rem}
+.project-tag{display:inline-block;padding:.2rem .7rem;border-radius:20px;font-size:.75rem;font-weight:600;margin-top:.8rem;background:rgba(206,27,27,.1);color:#CE1B1B;border:1px solid rgba(206,27,27,.15)}
+
+/* GITHUB SECTION */
+.github-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:2rem;text-align:center;backdrop-filter:blur(10px);max-width:500px;margin:0 auto;transition:all .4s var(--elastic)}
+.github-card h3{font-size:1.2rem;font-weight:700;margin-bottom:.3rem}
+.github-card p{color:var(--text-dim);margin-bottom:1rem;font-size:.9rem}
+.github-card:hover{transform:translateY(-8px);border-color:rgba(206,27,27,.3);box-shadow:0 30px 60px rgba(206,27,27,.15)}
+.github-card i.fab.fa-github{font-size:3rem;margin-bottom:1rem;color:#CE1B1B}
+.github-card .btn-primary i.fab.fa-github{color:#F0F0F0;font-size:1rem;margin-bottom:0}
+.github-contrib{width:100%;border-radius:12px;overflow:hidden;margin-bottom:1.2rem;background:var(--bg);padding:.5rem}
+.github-contrib img{width:100%;border-radius:8px;opacity:.85;max-height:100px}
+
+/* CONTACT HIRE SECTION */
+.contact-hire{text-align:center;padding:4rem 2rem}
+.contact-hire h3{font-size:1.8rem;font-weight:800;margin-bottom:1rem;color:#CE1B1B}
+.contact-hire p{color:var(--text-dim);max-width:500px;margin:0 auto 2rem;font-size:1.05rem}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--glass-border);padding:3rem 2rem;text-align:center;position:relative}
+.social-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.5rem}
+.social-links a{width:48px;height:48px;border-radius:50%;background:var(--glass);border:1px solid var(--glass-border);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:1.2rem;transition:all .4s var(--elastic);text-decoration:none}
+.social-links a:hover{background:#CE1B1B;color:#F0F0F0;border-color:transparent;transform:translateY(-4px) scale(1.1)}
+footer p{color:var(--text-dim);font-size:.85rem}
+
+/* REVEAL ANIMATIONS — bidirectional */
+.reveal{opacity:0;transform:translateY(60px);transition:all .7s var(--elastic)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal.from-above{transform:translateY(-60px)}
+.reveal-left{opacity:0;transform:translateX(-80px);transition:all .7s var(--elastic)}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-left.from-above{transform:translateX(80px)}
+.reveal-right{opacity:0;transform:translateX(80px);transition:all .7s var(--elastic)}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-right.from-above{transform:translateX(-80px)}
+.reveal-scale{opacity:0;transform:scale(.5);transition:all .7s var(--elastic)}
+.reveal-scale.active{opacity:1;transform:scale(1)}
+
+/* FAN OUT cards */
+.fan-out .project-card{opacity:0;transform:translateY(60px) rotate(-3deg);transition:all .7s var(--elastic)}
+.fan-out.active .project-card{opacity:1;transform:translateY(0) rotate(0)}
+.fan-out.from-above .project-card{opacity:0;transform:translateY(-60px) rotate(3deg)}
+
+/* TYPE-OUT TEXT */
+.type-out{overflow:hidden;white-space:nowrap;border-right:2px solid #CE1B1B;width:0;transition:width 1.2s steps(30,end)}
+.type-out.active{width:100%}
+
+/* ANIMATED ORBS */
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;will-change:transform}
+.orb-1{width:400px;height:400px;background:radial-gradient(circle,rgba(206,27,27,.12),transparent 70%);top:-10%;left:-10%;animation:orbFloat1 8s ease-in-out infinite}
+.orb-2{width:350px;height:350px;background:radial-gradient(circle,rgba(183,28,28,.1),transparent 70%);bottom:10%;right:-5%;animation:orbFloat2 10s ease-in-out infinite}
+.orb-3{width:250px;height:250px;background:radial-gradient(circle,rgba(206,27,27,.08),transparent 70%);top:40%;left:60%;animation:orbFloat3 12s ease-in-out infinite}
+@keyframes orbFloat1{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
+@keyframes orbFloat2{0%,100%{transform:translate(0,0)}50%{transform:translate(-30px,-40px)}}
+@keyframes orbFloat3{0%,100%{transform:translate(0,0)}50%{transform:translate(20px,-30px)}}
+
+/* GEOMETRIC DECORATIONS */
+.geo-deco{position:absolute;pointer-events:none;animation:geoSpin 20s linear infinite}
+.geo-hex{top:15%;right:8%}
+.geo-tri{bottom:20%;left:5%}
+@keyframes geoSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+/* CLIP PATH IMAGE REVEAL */
+.clip-reveal{clip-path:inset(100% 0 0 0);transition:clip-path .8s var(--elastic)}
+.clip-reveal.active{clip-path:inset(0 0 0 0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;background:rgba(10,10,15,.95);backdrop-filter:blur(20px);flex-direction:column;padding:1.5rem 2rem;gap:1rem;border-bottom:1px solid var(--glass-border)}
+  .nav-links.open{display:flex}
+  .menu-toggle{display:block}
+  section{padding:4rem 1.2rem}
+  .orb{display:none}
+  .geo-deco{display:none}
+  .stats-row{gap:1.5rem}
+  .btn-hire{font-size:1rem;padding:.9rem 2.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo">&lt;direkturcrypto/&gt;</div>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="#about" onclick="document.querySelector('.nav-links').classList.remove('open')">About</a></li>
+      <li><a href="#skills" onclick="document.querySelector('.nav-links').classList.remove('open')">Skills</a></li>
+      <li><a href="#experience" onclick="document.querySelector('.nav-links').classList.remove('open')">Experience</a></li>
+      <li><a href="#contact" class="btn-hire" style="padding:.5rem 1.2rem;font-size:.8rem" onclick="document.querySelector('.nav-links').classList.remove('open')">HIRE ME</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <canvas id="particles-canvas"></canvas>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="hero-content">
+    <div class="available-badge"><span class="dot"></span> Available for Select Projects</div>
+    <h1 class="text-reveal" id="hero-title">direkturcrypto</h1>
+    <p class="tagline" style="font-size:clamp(1.1rem,2.8vw,1.5rem);margin-top:1.2rem;line-height:1.5"><span class="char-reveal">I find bugs others miss.</span><br><span class="char-reveal">I build automation that works.</span></p>
+    <p style="color:var(--text-dim);font-size:.95rem;margin-top:1.2rem;max-width:550px;margin-left:auto;margin-right:auto">Web3 security researcher &amp; DeFi automation specialist with a track record across 15+ protocols. Smart contract auditing, exploit discovery, and production-grade bots.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-hire magnetic"><span class="shimmer"></span><i class="fas fa-briefcase"></i> Let's Talk</a>
+      <a href="#experience" class="btn btn-outline magnetic"><i class="fas fa-rocket"></i> See My Work</a>
+    </div>
+  </div>
+  <div class="scroll-indicator"><i class="fas fa-chevron-down"></i></div>
+</section>
+
+<!-- MARQUEE TICKER -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Security Research <span class="sep"></span></span>
+    <span class="marquee-item">DeFi <span class="sep"></span></span>
+    <span class="marquee-item">Smart Contract Auditing <span class="sep"></span></span>
+    <span class="marquee-item">Automation <span class="sep"></span></span>
+    <span class="marquee-item">Prediction Markets <span class="sep"></span></span>
+    <span class="marquee-item">Bug Bounties <span class="sep"></span></span>
+    <span class="marquee-item">Blockchain <span class="sep"></span></span>
+    <span class="marquee-item">AI Systems <span class="sep"></span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">Security Research <span class="sep"></span></span>
+    <span class="marquee-item">DeFi <span class="sep"></span></span>
+    <span class="marquee-item">Smart Contract Auditing <span class="sep"></span></span>
+    <span class="marquee-item">Automation <span class="sep"></span></span>
+    <span class="marquee-item">Prediction Markets <span class="sep"></span></span>
+    <span class="marquee-item">Bug Bounties <span class="sep"></span></span>
+    <span class="marquee-item">Blockchain <span class="sep"></span></span>
+    <span class="marquee-item">AI Systems <span class="sep"></span></span>
+  </div>
+</div>
+
+<!-- SVG DIVIDER 1 -->
+<div class="svg-divider">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <defs><linearGradient id="div1g" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#CE1B1B" stop-opacity=".3"/><stop offset="100%" stop-color="#B71C1C" stop-opacity=".3"/></linearGradient></defs>
+    <path d="M0,50 C180,20 360,70 540,40 C720,10 900,60 1080,30 C1200,10 1350,50 1440,40 L1440,80 L0,80Z" fill="var(--bg2)"/>
+    <path d="M0,55 C200,30 400,65 600,45 C800,25 1000,55 1200,35 C1350,20 1440,45 1440,45 L1440,80 L0,80Z" fill="var(--bg2)" opacity=".5"/>
+    <path class="draw-line" d="M0,60 Q360,20 720,50 T1440,35" fill="none" stroke="url(#div1g)" stroke-width="1.5"/>
+  </svg>
+</div>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--bg2);position:relative;overflow:hidden">
+  <svg class="grid-overlay" width="100%" height="100%" style="position:absolute;top:0;left:0;opacity:.03;pointer-events:none"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width=".5"/></pattern></defs><rect width="100%" height="100%" fill="url(#grid)"/></svg>
+  <div class="big-scale-text" data-scale-text>ABOUT ME</div>
+  <div class="section-header reveal">
+    <h2>About Me</h2>
+    <p>3+ years deep in Web3. I've audited DeFi protocols, discovered critical vulnerabilities in prediction markets, and built automation systems that run 24/7 without breaking. I work at the intersection of security research and engineering — because the best defense is understanding exactly how things break.</p>
+  </div>
+
+  <!-- Animated counters -->
+  <div class="stats-row reveal" data-delay=".15">
+    <div class="stat-item"><div class="stat-number" data-count="15">0</div><div class="stat-label">Protocols Worked With</div></div>
+    <div class="stat-item"><div class="stat-number" data-count="50">0</div><div class="stat-label">Bugs &amp; Exploits Found</div></div>
+    <div class="stat-item"><div class="stat-number" data-count="200">0</div><div class="stat-label">Automations Deployed</div></div>
+  </div>
+
+  <div class="lang-section reveal" style="transition-delay:.15s">
+    <div class="lang-badge magnetic"><i class="fas fa-globe"></i> Indonesia</div>
+    <div class="lang-badge magnetic"><i class="fas fa-globe"></i> English</div>
+  </div>
+  <svg class="geo-deco geo-hex" viewBox="0 0 100 100" width="60" height="60"><polygon points="50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5" fill="none" stroke="#CE1B1B" stroke-width="1" opacity=".15"/></svg>
+  <svg class="geo-deco geo-tri" viewBox="0 0 100 100" width="50" height="50"><polygon points="50,10 90,90 10,90" fill="none" stroke="#CE1B1B" stroke-width="1" opacity=".12"/></svg>
+</section>
+
+<!-- SVG DIVIDER 2 -->
+<div class="svg-divider">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <path d="M0,10 C480,70 960,0 1440,50 L1440,80 L0,80Z" fill="var(--bg)"/>
+    <path d="M0,30 C360,0 720,60 1080,20 C1260,5 1380,40 1440,30 L1440,80 L0,80Z" fill="var(--bg)" opacity=".4"/>
+  </svg>
+</div>
+
+<!-- SKILLS -->
+<section id="skills" style="position:relative;overflow:hidden">
+  <svg class="grid-overlay" width="100%" height="100%" style="position:absolute;top:0;left:0;opacity:.02;pointer-events:none"><rect width="100%" height="100%" fill="url(#grid)"/></svg>
+  <div class="big-scale-text" data-scale-text>SKILLS</div>
+  <div class="section-header reveal">
+    <h2>What I Do</h2>
+    <p>Every skill below translates to real value for your protocol, team, or project.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal-scale" data-delay="0.05">
+      <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><circle cx="9" cy="9" r="1" fill="#000"/><circle cx="15" cy="9" r="1" fill="#000"/><path d="M7 7l2 2M15 7l-2 2"/></svg></div>
+      <h3>Security Research</h3>
+      <p>I find vulnerabilities before attackers do. Smart contract auditing, exploit discovery, and reward mechanism analysis across DeFi and prediction markets.</p>
+    </div>
+    <div class="skill-card reveal-scale" data-delay="0.12">
+      <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg></div>
+      <h3>Engineering</h3>
+      <p>Production-grade tools, bots, and scripts that actually work in adversarial on-chain environments. Clean code. Reliable execution.</p>
+    </div>
+    <div class="skill-card reveal-scale" data-delay="0.19">
+      <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M12 2v4M8 2h8"/><circle cx="12" cy="15" r="2"/><path d="M9 12l-1 3M15 12l1 3"/></svg></div>
+      <h3>AI &amp; Content</h3>
+      <p>Leveraging AI to produce content, automate workflows, and build intelligent systems that scale your reach without scaling your team.</p>
+    </div>
+    <div class="skill-card reveal-scale" data-delay="0.26">
+      <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
+      <h3>DeFi Automation</h3>
+      <p>Automated trading, LP rebalancing, yield optimization, and point farming — systems that run 24/7 and maximize your returns while you sleep.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SVG DIVIDER 3 -->
+<div class="svg-divider">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <defs><linearGradient id="div3g" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#CE1B1B" stop-opacity=".2"/><stop offset="50%" stop-color="#B71C1C" stop-opacity=".2"/><stop offset="100%" stop-color="#CE1B1B" stop-opacity=".2"/></linearGradient></defs>
+    <path d="M0,50 C360,80 720,0 1080,50 C1260,70 1380,30 1440,40 L1440,80 L0,80Z" fill="var(--bg2)"/>
+    <path class="draw-line" d="M0,45 C240,70 480,10 720,50 C960,80 1200,20 1440,45" fill="none" stroke="url(#div3g)" stroke-width="1.5"/>
+  </svg>
+</div>
+
+<!-- EXPERIENCE (was Projects) -->
+<section id="experience" style="background:var(--bg2);position:relative;overflow:hidden">
+  <svg class="grid-overlay" width="100%" height="100%" style="position:absolute;top:0;left:0;opacity:.025;pointer-events:none"><rect width="100%" height="100%" fill="url(#grid)"/></svg>
+  <div class="big-scale-text" data-scale-text>EXPERIENCE</div>
+  <div class="section-header reveal">
+    <h2>Experience</h2>
+    <p>Real work. Real protocols. Real results.</p>
+  </div>
+  <div class="project-category fan-out">
+    <h3><i class="fas fa-seedling" style="color:#CE1B1B;margin-right:.5rem"></i>DeFi Automation &amp; Farming</h3>
+    <div class="project-grid">
+      <div class="project-card" data-delay="0.05"><h4>Openocean</h4><p>Built volume-optimization bots on a leading DEX aggregator. Engineered swap routing strategies that consistently generated trading volume while maintaining efficient execution across multiple chains.</p><span class="project-tag">DEX Aggregator</span></div>
+      <div class="project-card" data-delay="0.12"><h4>GAIA</h4><p>Designed an AI-driven bot for automated point accumulation. The system adapted strategies in real-time based on protocol changes, maximizing point yield with minimal manual intervention.</p><span class="project-tag">AI Automation</span></div>
+      <div class="project-card" data-delay="0.19"><h4>Katana</h4><p>Deployed an automated LP rebalance bot that dynamically adjusts liquidity positions. Result: optimized yield capture with reduced impermanent loss through intelligent rebalancing logic.</p><span class="project-tag">LP Automation</span></div>
+      <div class="project-card" data-delay="0.26"><h4>Limitless</h4><p>Built volume generation strategies on prediction market AMMs. Discovered and exploited edge cases in reward mechanisms that others overlooked.</p><span class="project-tag">Prediction Market</span></div>
+    </div>
+  </div>
+  <div class="project-category fan-out">
+    <h3><i class="fas fa-crosshairs" style="color:#CE1B1B;margin-right:.5rem"></i>Security Research &amp; Bug Hunting</h3>
+    <div class="project-grid">
+      <div class="project-card" data-delay="0.05"><h4>Limitless</h4><p>Discovered critical vulnerabilities in incentive reward distribution on prediction market LPs. Identified exploitable reward mechanisms that could have led to significant fund drainage.</p><span class="project-tag">Vulnerability Discovery</span></div>
+      <div class="project-card" data-delay="0.12"><h4>Polymarket</h4><p>Analyzed LP reward structures on the world's largest prediction market. Found optimization vectors in liquidity incentive mechanisms and developed strategies to capture mispriced rewards.</p><span class="project-tag">Reward Analysis</span></div>
+      <div class="project-card" data-delay="0.19"><h4>Pearl</h4><p>Architected distributed GPU mining infrastructure using serverless compute. Built the pipeline from scratch — orchestration, job distribution, and performance monitoring across distributed nodes.</p><span class="project-tag">Infrastructure</span></div>
+    </div>
+  </div>
+  <svg class="geo-deco geo-hex" style="bottom:10%;right:5%" viewBox="0 0 100 100" width="70" height="70"><polygon points="50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5" fill="none" stroke="#CE1B1B" stroke-width="1" opacity=".1"/></svg>
+</section>
+
+<!-- SVG DIVIDER 4 -->
+<div class="svg-divider">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <path d="M0,30 C240,60 480,10 720,40 C960,70 1200,20 1440,35 L1440,80 L0,80Z" fill="var(--bg)"/>
+  </svg>
+</div>
+
+<!-- GITHUB SECTION -->
+<section id="github" style="position:relative;overflow:hidden;padding:3rem 2rem">
+  <div class="github-card reveal-scale">
+    <i class="fab fa-github"></i>
+    <h3>Open Source Work</h3>
+    <p>Public projects, tools, and contributions on GitHub.</p>
+    <div class="github-contrib">
+      <img src="https://github-contributions-api.jogruber.de/v4/direkturcrypto?y=last&width=600&height=150&theme=dark" alt="GitHub contributions" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    <a href="https://github.com/direkturcrypto" target="_blank" class="btn btn-primary magnetic"><i class="fab fa-github"></i> View GitHub</a>
+  </div>
+</section>
+
+<!-- SVG DIVIDER 5 -->
+<div class="svg-divider">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <path d="M0,50 C360,20 720,70 1080,30 C1260,10 1380,40 1440,35 L1440,80 L0,80Z" fill="var(--bg2)"/>
+  </svg>
+</div>
+
+<!-- CONTACT / HIRE ME -->
+<section id="contact" style="background:var(--bg2);position:relative;overflow:hidden">
+  <svg class="grid-overlay" width="100%" height="100%" style="position:absolute;top:0;left:0;opacity:.02;pointer-events:none"><rect width="100%" height="100%" fill="url(#grid)"/></svg>
+  <div class="section-header reveal">
+    <h2>Ready to Build?</h2>
+    <p>I take on a limited number of projects to ensure every client gets my full focus. If your protocol needs security research, automation, or Web3 engineering — let's talk.</p>
+  </div>
+  <div class="contact-hire reveal" data-delay=".1">
+    <h3>Your Protocol Deserves Expert Attention</h3>
+    <p>Bug bounties. Smart contract auditing. DeFi automation. AI-powered tools. I deliver results, not just code.</p>
+    <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem">
+      <a href="https://t.me/direkturcrypto" target="_blank" class="btn-hire magnetic"><span class="shimmer"></span><i class="fab fa-telegram"></i> Message on Telegram</a>
+      <a href="https://twitter.com/direkturcrypto" target="_blank" class="btn btn-primary magnetic"><i class="fab fa-x-twitter"></i> DM on Twitter</a>
+    </div>
+  </div>
+  <div class="contact-btns reveal" data-delay=".2" style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap">
+    <a href="https://twitter.com/direkturcrypto" target="_blank" class="btn btn-outline magnetic"><i class="fab fa-x-twitter"></i> Twitter</a>
+    <a href="https://t.me/direkturcrypto" target="_blank" class="btn btn-outline magnetic"><i class="fab fa-telegram"></i> Telegram</a>
+    <a href="https://discord.com/users/direkturcrypto" target="_blank" class="btn btn-outline magnetic"><i class="fab fa-discord"></i> Discord</a>
+    <a href="https://github.com/direkturcrypto" target="_blank" class="btn btn-outline magnetic"><i class="fab fa-github"></i> GitHub</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="social-links">
+    <a href="https://twitter.com/direkturcrypto" target="_blank" class="magnetic"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://t.me/direkturcrypto" target="_blank" class="magnetic"><i class="fab fa-telegram"></i></a>
+    <a href="https://discord.com/users/direkturcrypto" target="_blank" class="magnetic"><i class="fab fa-discord"></i></a>
+    <a href="https://github.com/direkturcrypto" target="_blank" class="magnetic"><i class="fab fa-github"></i></a>
+  </div>
+  <p>&copy; 2026 direkturcrypto. All rights reserved.</p>
+</footer>
+
+<script>
+/* ============ ADVANCED ANIMATIONS ============ */
+
+// Particles (enhanced)
+(function(){
+  const c=document.getElementById('particles-canvas'),ctx=c.getContext('2d');
+  let w,h,particles=[];
+  function resize(){w=c.width=window.innerWidth;h=c.height=window.innerHeight}
+  window.addEventListener('resize',resize);resize();
+  class P{
+    constructor(){this.reset()}
+    reset(){this.x=Math.random()*w;this.y=Math.random()*h;this.vx=(Math.random()-.5)*.6;this.vy=(Math.random()-.5)*.6;this.r=Math.random()*2+.5;this.alpha=Math.random()*.4+.1}
+    update(px){this.x+=this.vx+px*.02;this.y+=this.vy;if(this.x<0||this.x>w)this.vx*=-1;if(this.y<0||this.y>h)this.vy*=-1}
+    draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(206,27,27,${this.alpha})`;ctx.fill()}
+  }
+  for(let i=0;i<90;i++)particles.push(new P());
+  let mx=0;
+  document.addEventListener('mousemove',e=>{mx=(e.clientX/w-.5)*2});
+  function animate(){
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{p.update(mx);p.draw()});
+    for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
+      const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<150){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(206,27,27,${.1*(1-d/150)})`;ctx.lineWidth=.6;ctx.stroke()}
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+// Scroll progress bar
+const progressEl=document.getElementById('scroll-progress');
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-window.innerHeight;
+  const pct=window.scrollY/h;
+  progressEl.style.transform=`scaleX(${pct})`;
+},{passive:true});
+
+// Nav scroll
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)},{passive:true});
+
+// Parallax for orbs & hero
+const orbs=document.querySelectorAll('.orb');
+const heroContent=document.querySelector('.hero-content');
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  if(sy<window.innerHeight){
+    orbs.forEach((o,i)=>{o.style.transform=`translateY(${sy*(0.1+i*0.05)}px)`});
+    heroContent.style.transform=`translateY(${sy*0.3}px)`;
+    heroContent.style.opacity=1-sy/(window.innerHeight*0.8);
+  }
+},{passive:true});
+
+// SVG draw-on-scroll
+function animateDrawLines(){
+  document.querySelectorAll('.draw-line').forEach(el=>{
+    const rect=el.getBoundingClientRect();
+    if(rect.top<window.innerHeight && rect.bottom>0){
+      const len=el.getTotalLength();
+      if(!el.dataset.init){el.style.strokeDasharray=len;el.style.strokeDashoffset=len;el.dataset.init='1'}
+      const pct=Math.min(1,Math.max(0,(window.innerHeight-rect.top)/(window.innerHeight+rect.height)));
+      el.style.strokeDashoffset=len*(1-pct);
+    }
+  });
+}
+window.addEventListener('scroll',animateDrawLines,{passive:true});
+animateDrawLines();
+
+/* ============ BIDIRECTIONAL SCROLL DIRECTION DETECTION ============ */
+let lastScrollY = window.scrollY;
+let scrollDirection = 'down';
+
+window.addEventListener('scroll', () => {
+  const currentY = window.scrollY;
+  scrollDirection = currentY > lastScrollY ? 'down' : 'up';
+  lastScrollY = currentY;
+}, { passive: true });
+
+/* ============ BIDIRECTIONAL INTERSECTION OBSERVER ============ */
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .fan-out');
+
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      // Remove opposite direction class, add correct one
+      e.target.classList.remove('from-above');
+      if (scrollDirection === 'up') {
+        e.target.classList.add('from-above');
+      }
+      const delay = parseFloat(e.target.dataset.delay) || 0;
+      setTimeout(() => {
+        e.target.classList.add('active');
+      }, delay * 1000);
+    } else {
+      // Reset when leaving viewport so it re-animates on re-entry
+      e.target.classList.remove('active', 'from-above');
+    }
+  });
+}, { threshold: 0.1 });
+
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ============ FAN-OUT CARDS (cascade with stagger) ============ */
+document.querySelectorAll('.fan-out').forEach(container => {
+  const cards = container.querySelectorAll('.project-card');
+  const fanObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const dir = scrollDirection === 'up' ? 'from-above' : '';
+        e.target.classList.remove('from-above');
+        if (dir) e.target.classList.add('from-above');
+        const delay = parseFloat(e.target.dataset.delay) || 0;
+        setTimeout(() => { e.target.classList.add('active'); }, delay * 1000);
+      } else {
+        e.target.classList.remove('active', 'from-above');
+      }
+    });
+  }, { threshold: 0.05 });
+  cards.forEach(c => fanObs.observe(c));
+});
+
+/* ============ ANIMATED NUMBER COUNTERS ============ */
+const counterEls = document.querySelectorAll('[data-count]');
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const target = parseInt(e.target.dataset.count);
+      const duration = 2000;
+      const start = performance.now();
+      const animate = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        // Elastic easing out
+        const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress) * Math.cos((progress * 10 - 0.75) * (2 * Math.PI / 3));
+        e.target.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(animate);
+        else e.target.textContent = target + '+';
+      };
+      requestAnimationFrame(animate);
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+counterEls.forEach(el => counterObs.observe(el));
+
+/* ============ CARD TILT / 3D PERSPECTIVE EFFECT ============ */
+document.querySelectorAll('.skill-card, .project-card, .github-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 8;
+    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+  });
+});
+
+/* ============ BIG TEXT SCALE ON SCROLL ============ */
+document.querySelectorAll('[data-scale-text]').forEach(el => {
+  const section = el.closest('section');
+  window.addEventListener('scroll', () => {
+    const rect = section.getBoundingClientRect();
+    const vh = window.innerHeight;
+    if (rect.top < vh && rect.bottom > 0) {
+      const progress = 1 - (rect.top / vh);
+      const scale = 0.5 + progress * 1.5;
+      const opacity = Math.min(1, progress * 2);
+      el.style.transform = `scale(${Math.min(scale, 1.5)})`;
+      el.style.opacity = Math.min(opacity, 0.08);
+    }
+  }, { passive: true });
+});
+
+/* ============ HERO TITLE - CHARACTER SPLIT ANIMATION ============ */
+(function() {
+  const title = document.getElementById('hero-title');
+  if (!title) return;
+  const text = title.textContent;
+  title.innerHTML = '';
+  text.split('').forEach((char, i) => {
+    const span = document.createElement('span');
+    span.textContent = char;
+    span.style.display = 'inline-block';
+    span.style.opacity = '0';
+    span.style.transform = 'translateY(40px) rotateX(90deg)';
+    span.style.transition = `all 0.6s cubic-bezier(.34,1.56,.64,1) ${i * 0.05}s`;
+    title.appendChild(span);
+  });
+  // Trigger after small delay
+  setTimeout(() => {
+    title.querySelectorAll('span').forEach(span => {
+      span.style.opacity = '1';
+      span.style.transform = 'translateY(0) rotateX(0)';
+    });
+  }, 300);
+})();
+
+/* ============ MAGNETIC CURSOR EFFECT ============ */
+document.querySelectorAll('.magnetic').forEach(el => {
+  el.addEventListener('mousemove', e => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    el.style.transform = `translate(${x * .2}px,${y * .2}px) scale(1.05)`;
+  });
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = 'translate(0,0) scale(1)';
+  });
+});
+
+/* ============ SMOOTH SCROLL FOR NAV LINKS ============ */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+/* ============ GRADIENT MESH BACKGROUND SHIFT ON SCROLL ============ */
+(function() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  window.addEventListener('scroll', () => {
+    const sy = window.scrollY;
+    const hue = (sy * 0.05) % 360;
+    hero.style.background = `radial-gradient(ellipse at ${50 + Math.sin(sy * 0.002) * 20}% ${50 + Math.cos(sy * 0.003) * 20}%, hsla(${0 + hue}, 80%, 35%, .04), transparent 60%), var(--bg)`;
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
