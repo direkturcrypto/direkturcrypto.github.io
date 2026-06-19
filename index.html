@@ -246,7 +246,7 @@ nav.scrolled{
 
 /* Hero inline stats */
 .hero-stats{
-  display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;
+  display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;
   margin:2.5rem 0;position:relative;
 }
 .hero-stats::before{
@@ -254,18 +254,53 @@ nav.scrolled{
   width:60%;height:1px;
   background:linear-gradient(90deg,transparent,var(--glass-border),transparent);
 }
-.hero-stat{text-align:center;min-width:100px}
+.hero-stat{
+  text-align:center;min-width:140px;padding:1.6rem 2rem;
+  position:relative;border-radius:16px;
+  background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  opacity:0;transform:translateY(30px) scale(.96);
+  animation:heroStatLoad .8s var(--elastic) forwards;
+}
+.hero-stat:nth-child(1){animation-delay:.15s}
+.hero-stat:nth-child(2){animation-delay:.3s}
+.hero-stat:nth-child(3){animation-delay:.45s}
+/* gradient border via pseudo-element */
+.hero-stat::before{
+  content:'';position:absolute;inset:0;border-radius:16px;padding:1px;
+  background:linear-gradient(135deg,rgba(255,59,48,.35),rgba(255,255,255,.08),rgba(0,212,255,.2));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;
+}
+/* glow behind number */
+.hero-stat::after{
+  content:'';position:absolute;top:20%;left:50%;transform:translateX(-50%);
+  width:60%;height:50%;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,59,48,.18),transparent 70%);
+  filter:blur(12px);pointer-events:none;z-index:0;
+}
 .hero-stat .number{
-  font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;
-  font-family:var(--font-mono);
+  font-size:clamp(1.7rem,4.2vw,2.4rem);font-weight:900;
+  font-family:var(--font-mono);position:relative;z-index:1;
   background:linear-gradient(135deg,var(--red),var(--red-light));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
   display:block;line-height:1.1;
 }
+/* divider between number and label */
+.hero-stat .number::after{
+  content:'';display:block;margin:.6rem auto 0;width:36px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--glass-border),transparent);
+}
 .hero-stat .label{
   font-size:.75rem;color:var(--text-dim);font-weight:500;
   text-transform:uppercase;letter-spacing:.08em;margin-top:.3rem;
+  position:relative;z-index:1;
+}
+@keyframes heroStatLoad{
+  0%{opacity:0;transform:translateY(30px) scale(.96)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
 }
 
 /* Hero CTA */
@@ -778,15 +813,15 @@ footer p{color:var(--text-muted);font-size:.85rem}
     <p class="subtitle">Web3 Security Researcher <span>|</span> DeFi Automation Architect <span>|</span> Bug Hunter</p>
     <p class="hero-desc">Smart contract auditing, exploit discovery, and production-grade automation. If your protocol has a vulnerability, I'll find it before someone drains it.</p>
     <div class="hero-stats">
-      <div class="hero-stat reveal" data-delay="0.1">
+      <div class="hero-stat">
         <span class="number" data-count="50">0</span>
         <span class="label">Bugs Found</span>
       </div>
-      <div class="hero-stat reveal" data-delay="0.2">
+      <div class="hero-stat">
         <span class="number" data-count="15">0</span>
         <span class="label">Protocols</span>
       </div>
-      <div class="hero-stat reveal" data-delay="0.3">
+      <div class="hero-stat">
         <span class="number" data-prefix="$" data-suffix="M+" data-count="2">0</span>
         <span class="label">In Bounties</span>
       </div>
